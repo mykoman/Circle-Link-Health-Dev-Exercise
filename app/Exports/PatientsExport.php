@@ -3,22 +3,21 @@
 namespace App\Exports;
 
 use App\Models\Patient;
-use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\Exportable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 
 
 
-class PatientsExport implements FromQuery, ShouldQueue
+class PatientsExport implements FromCollection
 {
 
    
-    use Exportable;
+    // use Exportable;
 
     
-    public function query()
+    public function collection()
     {
-        return Patient::query();
+        return Patient::limit(1000)->get();
     }
 }

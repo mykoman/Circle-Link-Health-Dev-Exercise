@@ -43,11 +43,6 @@ class PatientTable extends DataTableComponent
     public function exportSelected()
     {
         
-        // return (new PatientsExport($this->selectedRowsQuery))->download($this->tableName.'.xlsx');
-        // return Excel::store(new PatientsExport, 'patients.csv');
-        return (new PatientsExport)->store('patients.csv');
-    
-
-        
+        return Excel::download(new PatientsExport, 'patient.csv'); 
     }
 }
